@@ -6,7 +6,7 @@ let special = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~\\";
 
 let length;
 function generatePassword() {
-  let selectedString = '';
+  let selectedString = "";
 
   //Length Prompt
   length = window.prompt(
@@ -28,7 +28,6 @@ function generatePassword() {
     );
   }
   if (yesOrNo === "Yes") selectedString += lowercase;
-  
 
   //Uppercase Prompt
   yesOrNo = window.prompt("Do you want uppercase? Enter Yes or No.");
@@ -60,11 +59,15 @@ function generatePassword() {
   }
   if (yesOrNo === "Yes") selectedString += special;
 
-  let passwordStr = ''
-  for(let i = 0; i < length; i++) {
-    passwordStr += selectedString[Math.floor(Math.random()*selectedString.length)];
+  if (selectedString.length > 0) {
+    let passwordStr = "";
+    for (let i = 0; i < length; i++) {
+      passwordStr +=
+        selectedString[Math.floor(Math.random() * selectedString.length)];
+    }
+    return passwordStr;
   }
-  return passwordStr;
+  return "No character types selected. Try again"
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
